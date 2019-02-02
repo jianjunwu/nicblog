@@ -11,6 +11,7 @@
 '''
 import os
 from flask import Flask
+from flask_cors import CORS
 from app.configs import config
 from app.blueprints.ping import ping_bp
 
@@ -20,6 +21,7 @@ def create_app(config_name=None):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     register_blueprints(app)
+    CORS(app)
     return app
     
 
